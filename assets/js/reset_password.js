@@ -1,7 +1,9 @@
 $(document).ready(function () {
+    alert('call')
     $('#reset_password_form').submit(function (e) {
         e.preventDefault();
-        var register_password = $.trim($('#register-password').val());
+        alert('call');
+       /* var register_password = $.trim($('#register-password').val());
         var register_password2 = $('#register-password2').val();
         // regular expressions
         var pass_regex = (/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/);
@@ -18,7 +20,7 @@ $(document).ready(function () {
         else {
             var form_data = $('#reset_password_form').serialize();
             $.ajax({
-                url: 'users/reset_password/new_password',
+                url: 'users/reset_password/update_password',
                 type: 'post',
                 dataType: 'json',
                 data: form_data,
@@ -44,6 +46,6 @@ $(document).ready(function () {
                 }
             });
         }
-
+*/
     });
 })
