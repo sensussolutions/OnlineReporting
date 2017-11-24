@@ -3,8 +3,6 @@ $(document).ready(function () {
         e.preventDefault();
         var email = $.trim($('#login-username').val());
         var password = $.trim($('#login-password').val());
-        console.log(email);
-        console.log(password);
         if ( email.length == 0){
            alert('email required!');
         }
@@ -14,28 +12,20 @@ $(document).ready(function () {
         else{
            var form_data =  $('#signin_form').serialize();
             $.ajax({
-                url:'sign_in/user_auth',
+                url:'users/request_handler/login',
                 type:'post',
                 dataType:'json',
-                  data:form_data,
+                data:form_data,
                 success:function (response) {
                     console.log(response);
-                 //   var response=JSON.parse(response);
-                    if (response.exist == true){
-                     if (response.active == true){
-                           location.href = 'dashboard';
-                     }
-                     else{
-                         $('.message').text("Please activate you account first!");
-                         $('div').removeClass('hidden');
-                     }
+                    if (response.status == 200) {
 
-                     }
-                     else if (response.exist == false){
-                        $('.message').text("user name and password does not exist!");
+                        location.href = 'dashboard';
+                    }
+                    else if(response.status == 401) {
+                        $('.message').text("username and password does not match.");
                         $('div').removeClass('hidden');
-                     }
-
+                    }
                 }
             });
         }

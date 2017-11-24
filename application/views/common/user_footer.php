@@ -20,4 +20,6 @@
     <script src="assets/js/signup.js"></script>
 <?php } else if ($page_title == 'Forgot Password'){?>
     <script src="assets/js/forgot_password.js"></script>
+<?php } else if($page_title == 'Password Reset'){?>
+    <script src="assets/js/reset_password.js"></script>
 <?php }?>

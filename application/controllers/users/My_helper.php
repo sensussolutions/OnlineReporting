@@ -1,13 +1,18 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: LENOVO
- * Date: 11/22/2017
- * Time: 12:17 PM
- */
 class My_helper extends CI_Controller
 {
-    public $url = "test";
+    public $page_name = null;
+    public $page_title = null;
+    public $variables = null;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->variables = $this->globals->user_variables();
+        $this->page_name = $this->variables[1];
+        $this->page_title = $this->variables[2];
+
+    }
 
 }

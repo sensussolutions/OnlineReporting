@@ -1,5 +1,5 @@
 <?php
-if (!function_exists('send_request')) {
+if (!function_exists('auth_request')) {
     function auth_request($url,$send_info){
         // api url
         $url = $url;
@@ -19,7 +19,7 @@ if (!function_exists('send_request')) {
         $result = curl_exec($ch);
         //close cURL resource
         curl_close($ch);
-        echo $result;
+        return $result;
 
     }
 }

@@ -15,7 +15,7 @@
                             <a href="#" data-toggle="modal" data-target="#modal-terms">View Terms</a>
                         </li>
                         <li>
-                            <a href="http://localhost/ui/" data-toggle="tooltip" data-placement="left" title="Log In"><i class="si si-login"></i></a>
+                            <a href="<?php echo base_url();?>" data-toggle="tooltip" data-placement="left" title="Log In"><i class="si si-login"></i></a>
                         </li>
                     </ul>
                     <h3 class="block-title">Forget Password</h3>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12 col-sm-6 col-md-5">
+                            <div class="col-xs-12 col-sm-6 col-md-8">
                                 <button class="btn btn-block btn-primary" type="submit"><i class="fa fa-plus pull-right"></i>Create New Password</button>
                             </div>
                         </div>

@@ -15,7 +15,7 @@
                             <a href="#" data-toggle="modal" data-target="#modal-terms">View Terms</a>
                         </li>
                         <li>
-                            <a href="http://localhost/ui/" data-toggle="tooltip" data-placement="left" title="Log In"><i class="si si-login"></i></a>
+                            <a href="<?php echo base_url();?>" data-toggle="tooltip" data-placement="left" title="Log In"><i class="si si-login"></i></a>
                         </li>
                     </ul>
                     <h3 class="block-title">Register</h3>

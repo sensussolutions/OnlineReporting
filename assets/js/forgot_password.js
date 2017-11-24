@@ -13,35 +13,36 @@ $(document).ready(function () {
         else {
             var form_data = $('#forgot_password_form').serialize();
             $.ajax({
-                url: 'users/forgot_password/email_verify',
+                url: 'users/request_handler/forgot_password',
                 type: 'post',
                 dataType: 'json',
                 data: form_data,
                 success: function (response) {
                     //  var response=JSON.parse(response);
                     console.log(response);
-                    if (response.message == true) {
-                        $('.strong-message').text('Success!');
-                        $('.message').text('Please check your email id.');
-                        $('.toast-message').remove('alert-danger');
-                        $('.toast-message').remove('alert-info');
-                        $('.toast-message').addClass('alert-success');
-                        $('.toast-message').removeClass('hidden');
 
-                    }
-                    else if (response.message == false) {
+                        if(response.status == 200){
+                            $('.strong-message').text('Success!');
+                            $('.message').text('Please check your email id.');
+                            $('.toast-message').removeClass('alert-danger');
+                            $('.toast-message').removeClass('alert-info');
+                            $('.toast-message').addClass('alert-success');
+                            $('.toast-message').removeClass('hidden');
+                        }
+                        if(response.status == 501){
+                            $('.strong-message').text('Fail!');
+                            $('.message').text('Email not send. Please try again');
+                            $('.toast-message').removeClass('alert-success');
+                            $('.toast-message').removeClass('alert-danger');
+                            $('.toast-message').addClass('alert-info');
+                            $('.toast-message').removeClass('hidden');
+                        }
+
+                    else if (response.status == 401) {
                         $('.strong-message').text('Warning!');
-                        $('.message').text('This email id doesn\t exist. Please chose right one.');
+                        $('.message').text('This email id doesn\'t exist. Please chose right one.');
                         $('.toast-message').removeClass('alert-success');
                         $('.toast-message').addClass('alert-danger');
-                        $('.toast-message').removeClass('hidden');
-                    }
-                    else if (response.message == 'email not send') {
-                        $('.strong-message').text('Fail!');
-                        $('.message').text('Email not send. Please try again');
-                        $('.toast-message').removeClass('alert-success');
-                        $('.toast-message').removeClass('alert-danger');
-                        $('.toast-message').addClass('alert-info');
                         $('.toast-message').removeClass('hidden');
                     }
                 }

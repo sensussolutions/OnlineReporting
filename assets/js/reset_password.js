@@ -1,9 +1,8 @@
 $(document).ready(function () {
-    alert('call')
+
     $('#reset_password_form').submit(function (e) {
         e.preventDefault();
-        alert('call');
-       /* var register_password = $.trim($('#register-password').val());
+        var register_password = $.trim($('#register-password').val());
         var register_password2 = $('#register-password2').val();
         // regular expressions
         var pass_regex = (/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/);
@@ -20,22 +19,24 @@ $(document).ready(function () {
         else {
             var form_data = $('#reset_password_form').serialize();
             $.ajax({
-                url: 'users/reset_password/update_password',
+                url: 'users/request_handler/password_update',
                 type: 'post',
                 dataType: 'json',
                 data: form_data,
                 success: function (response) {
                     //  var response=JSON.parse(response);
                     console.log(response);
-                    if (response.message == true) {
-                        $('.strong-message').text('Success!');
-                        $('.message').text('Password has been changed.');
-                        $('.toast-message').remove('alert-danger');
-                        $('.toast-message').addClass('alert-success');
-                        $('.toast-message').removeClass('hidden');
-
+                    if (response.status == 200) {
+                            $('.strong-message').text('Success!');
+                            $('.message').text('Password has been changed.');
+                            $('.toast-message').remove('alert-danger');
+                            $('.toast-message').addClass('alert-success');
+                            $('.toast-message').removeClass('hidden');
+                            setTimeout(function () {
+                                location.href = 'http://localhost/OnlineReporting/';
+                            },5000)
                     }
-                    else if (response.message == false) {
+                    else if (response.status == 401) {
                         $('.strong-message').text('Error!');
                         $('.message').text('Please try again.');
                         $('.toast-message').removeClass('alert-success');
@@ -46,6 +47,5 @@ $(document).ready(function () {
                 }
             });
         }
-*/
     });
 })

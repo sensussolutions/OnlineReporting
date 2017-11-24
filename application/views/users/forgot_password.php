@@ -3,11 +3,16 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <!-- Reminder Block -->
+
+            <div class="alert hidden toast-message">
+                <strong class="strong-message">!</strong> <span class="message">test</span>
+            </div>
+
             <div class="block block-themed animated fadeIn">
                 <div class="block-header bg-primary">
                     <ul class="block-options">
                         <li>
-                            <a href="http://localhost/ui" data-toggle="tooltip" data-placement="left" title="Log In"><i class="si si-login"></i></a>
+                            <a href="<?php echo base_url();?>" data-toggle="tooltip" data-placement="left" title="Log In"><i class="si si-login"></i></a>
                         </li>
                     </ul>
                     <h3 class="block-title">Password Reminder</h3>

@@ -31,30 +31,29 @@ $(document).ready(function () {
         else {
             var form_data = $('#registration_form').serialize();
             $.ajax({
-                url: 'users/sign_up/register_new_user',
+                url: 'users/request_handler/register',
                 type: 'post',
                 dataType: 'json',
                 data: form_data,
                 success: function (response) {
-                    //  var response=JSON.parse(response);
                     console.log(response);
-                    if (response.message == true) {
+                    if (response.status == 201) {
                         $('.strong-message').text('Success!');
                         $('.message').text('Please verify your email id.');
-                        $('.toast-message').remove('alert-danger');
-                        $('.toast-message').remove('alert-info');
+                        $('.toast-message').removeClass('alert-danger');
+                        $('.toast-message').removeClass('alert-info');
                         $('.toast-message').addClass('alert-success');
                         $('.toast-message').removeClass('hidden');
-
                     }
-                    else if (response.message == false) {
+                    else if (response.status == 401) {
                         $('.strong-message').text('Warning!');
                         $('.message').text('This email id already exist. Please chose different one.');
                         $('.toast-message').removeClass('alert-success');
+                        $('.toast-message').removeClass('alert-info');
                         $('.toast-message').addClass('alert-danger');
                         $('.toast-message').removeClass('hidden');
                     }
-                    else if (response.message == 'email not send') {
+                    else if (response.status == 501) {
                         $('.strong-message').text('Fail!');
                         $('.message').text('Email not send. Please try again');
                         $('.toast-message').removeClass('alert-success');
